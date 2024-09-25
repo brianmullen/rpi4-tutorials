@@ -2,6 +2,11 @@ import RPi.GPIO as GPIO
 from enum import Enum
 from _Core import OutputPin, PinResistor
 
+class RGBColor(Enum):
+    RED = 1
+    GREEN = 2
+    BLUE = 3
+
 class LEDState(Enum):
     OFF = 1
     ON = 2
@@ -67,10 +72,10 @@ class PWMLED(LED):
         super().close()
 
 class RGBLED(object):
-    def __init__(self, red_pin: int, green_pin: int, blue_pin: int, resistor: PinResistor = PinResistor.NONE):
-        self.__red = LED(red_pin, resistor=resistor)
-        self.__green = LED(green_pin, resistor=resistor)
-        self.__blue = LED(blue_pin, resistor=resistor)
+    def __init__(self, red_pin: int, green_pin: int, blue_pin: int, frequency: float = 100, resistor: PinResistor = PinResistor.NONE):
+        self.__red = PWMLED(red_pin, frequency=frequency, resistor=resistor)
+        self.__green = PWMLED(green_pin, frequency=frequency, resistor=resistor)
+        self.__blue = PWMLED(blue_pin, frequency=frequency, resistor=resistor)
         super().__init__()
     
     def __del__(self):
@@ -78,15 +83,15 @@ class RGBLED(object):
             self.close()
 
     @property
-    def red(self) -> LED:
+    def red(self) -> PWMLED:
         return self.__red
     
     @property
-    def green(self) -> LED:
+    def green(self) -> PWMLED:
         return self.__green
     
     @property
-    def blue(self) -> LED:
+    def blue(self) -> PWMLED:
         return self.__blue
 
     @property
