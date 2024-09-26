@@ -50,7 +50,7 @@ class PWMLED(LED):
     def frequency(self, newValue: float):
         if self.__frequency != newValue:
             self.__frequency = newValue
-            self.__pwm.ChangeFrequence(newValue)
+            self.__pwm.ChangeFrequency(newValue)
     
     @property
     def duty_cycle(self) -> float:
