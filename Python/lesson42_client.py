@@ -12,11 +12,10 @@ while True:
     message,address=clientSocket.recvfrom(bufferSize)
     message=message.decode('utf-8')
     response=message.split(':')
-    print('Server Address:', address[0], 'Port:', address[1])
-
+    
     if len(response) == 1:
         print(response[0])
     elif len(response) == 2:
         print('Temperature:', response[0], 'Humidity:', response[1])
     
-    sleep(0.2)
+    sleep(1)
