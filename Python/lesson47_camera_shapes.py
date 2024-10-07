@@ -2,8 +2,6 @@ import cv2
 from picamera2 import Picamera2
 from time import time
 
-from traitlets import Bool
-
 fps = 58.92
 frameSize=(640,480)
 camera=Picamera2()
@@ -31,7 +29,7 @@ circleRadius = 100
 circleColor=(255, 0, 0)
 circleThickness=2
 
-def updateFps(newValue: float, useLowPassFilter: Bool = True):
+def updateFps(newValue: float, useLowPassFilter: bool = True):
     global fps
 
     if useLowPassFilter:

@@ -2,8 +2,6 @@ import cv2
 from picamera2 import Picamera2
 from time import time
 
-from traitlets import Bool
-
 fps = 58.92
 frameWidth=640
 frameHeight=480
@@ -33,7 +31,7 @@ movementSpeed=60.0
 horizontalDirection = 1
 verticalDirection = 1
 
-def updateFps(newValue: float, useLowPassFilter: Bool = True):
+def updateFps(newValue: float, useLowPassFilter: bool = True):
     global fps
 
     if useLowPassFilter:

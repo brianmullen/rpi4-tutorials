@@ -2,8 +2,6 @@ import cv2
 from picamera2 import Picamera2
 from time import time
 
-from traitlets import Bool
-
 fps = 58.92
 frameSize=(640,480)
 camera=Picamera2()
@@ -21,7 +19,7 @@ overlayFontScale = 1.5
 overlayFontColor = (0, 0, 255)                          # opencv uses GBR colorspace
 overlayFontThickness = 3
 
-def updateFps(newValue: float, useLowPassFilter: Bool = True):
+def updateFps(newValue: float, useLowPassFilter: bool = True):
     global fps
 
     if useLowPassFilter:
